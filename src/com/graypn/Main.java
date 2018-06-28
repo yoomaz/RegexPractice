@@ -7,71 +7,58 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        test01();
+        test01();
 
-//        test02();
+        test02();
 
-//        test03();
+        test03();
 
-//        test04();
+        test04();
 
-//        test05();
+        test05();
 
-//        test06();
+        test06();
 
-//        test07();
+        test07();
 
-//        test08();
+        test08();
 
-//        test09();
+        test09();
 
-//        test10();
+        test10();
 
-//        test11();
+        test11();
 
-//        test12();
+        test12();
 
-//        test13();
+        test13();
 
-//        test14();
+        test14();
 
-//        test15();
+        test15();
 
-//        test16();
+        test16();
 
-//        test17();
+        test17();
 
-//        test18();
+        test18();
 
-        test00();
+        test19();
     }
-    /**
-     * +
-     * 一次或者多次
-     */
-    private static void test00() {
-        String pattern = "[1-9][*]";
 
-        String str01 = "2[a]";
-        String str02 = "snoow";
-        String str03 = "snw";
-
-        System.out.println(Pattern.matches(pattern, str01));
-//        System.out.println(Pattern.matches(pattern, str02));
-//        System.out.println(Pattern.matches(pattern, str03));
-
-    }
 
     /**
      * +
      * 一次或者多次
      */
     private static void test01() {
+        System.out.println("------------test01()------------------");
+
         String pattern = "sno+w";
 
-        String str01 = "snow";
-        String str02 = "snoow";
-        String str03 = "snw";
+        String str01 = "snow"; // true
+        String str02 = "snoow"; // true
+        String str03 = "snw"; // false
 
         System.out.println(Pattern.matches(pattern, str01));
         System.out.println(Pattern.matches(pattern, str02));
@@ -84,11 +71,13 @@ public class Main {
      * 零次或者多次
      */
     private static void test02() {
+        System.out.println("------------test02()------------------");
+
         String pattern = "sno*w";
 
-        String str01 = "snow";
-        String str02 = "snoow";
-        String str03 = "snw";
+        String str01 = "snow"; // true
+        String str02 = "snoow"; // true
+        String str03 = "snw"; // true
 
         System.out.println(Pattern.matches(pattern, str01));
         System.out.println(Pattern.matches(pattern, str02));
@@ -101,6 +90,8 @@ public class Main {
      * 只匹配 sno*w ，java 里面用 \ 转义需要用两个 \\
      */
     private static void test03() {
+        System.out.println("------------test03()------------------");
+
         String pattern = "sno\\*w";
 
         String str01 = "snow";
@@ -116,6 +107,8 @@ public class Main {
      * 零次或者一次
      */
     private static void test04() {
+        System.out.println("------------test04()------------------");
+
         String pattern = "sno?w";
 
         String str01 = "snow";  // true
@@ -133,6 +126,8 @@ public class Main {
      * 数字范围
      */
     private static void test05() {
+        System.out.println("------------test05()------------------");
+
         String pattern = "[1-9][0-9]*";
 
         String str01 = "1";  // true
@@ -150,10 +145,12 @@ public class Main {
      * 重复 n 次
      */
     private static void test06() {
+        System.out.println("------------test06()------------------");
+
         String pattern = "sno{2}w";
 
-        String str01 = "snow";  // true
-        String str02 = "snoow"; // false
+        String str01 = "snow";  // false
+        String str02 = "snoow"; // true
         String str03 = "snw";   // false
 
 
@@ -167,10 +164,12 @@ public class Main {
      * 重复至少 n 次
      */
     private static void test07() {
+        System.out.println("------------test07()------------------");
+
         String pattern = "sno{2,}w";
 
-        String str01 = "snow";  // true
-        String str02 = "snoow"; // false
+        String str01 = "snow";  // false
+        String str02 = "snoow"; // true
         String str03 = "snoooow";   // true
 
 
@@ -184,11 +183,13 @@ public class Main {
      * 重复至少 n 次, 最多 m 次
      */
     private static void test08() {
+        System.out.println("------------test08()------------------");
+
         String pattern = "sno{2,3}w";
 
-        String str01 = "snow";  // true
-        String str02 = "snoow"; // false
-        String str03 = "snooow";   // false
+        String str01 = "snow";  // false
+        String str02 = "snoow"; // true
+        String str03 = "snooow";   // true
         String str04 = "snoooow";   // false
 
 
@@ -203,6 +204,8 @@ public class Main {
      * 代表单词的开头或结尾，也就是单词的分界处，它只匹配一个位置
      */
     private static void test09() {
+        System.out.println("------------test09()------------------");
+
         String pattern = "\\bhi\\b";
 
         String str01 = "hi";  // true
@@ -222,11 +225,13 @@ public class Main {
      * 这里 .* 匹配任意多个字符
      */
     private static void test10() {
+        System.out.println("------------test10()------------------");
+
         String pattern = "hi.*";
 
         String str01 = "hi";  // true
-        String str02 = "him"; // false
-        String str03 = "history";   // false
+        String str02 = "him"; // true
+        String str03 = "history";   // true
 
 
         System.out.println(Pattern.matches(pattern, str01));
@@ -242,6 +247,8 @@ public class Main {
      * 0\d{2}-\d{7}
      */
     private static void test11() {
+        System.out.println("------------test11()------------------");
+
         String pattern01 = "0\\d\\d-\\d\\d\\d\\d\\d\\d\\d";
         String pattern02 = "0\\d{2}-\\d{7}";
 
@@ -260,6 +267,8 @@ public class Main {
      * 匹配字母或数字或下划线，等价于 [A-Za-z0-9_]，不能匹配汉字
      */
     private static void test12() {
+        System.out.println("------------test12()------------------");
+
         String pattern = "\\w{2}";
 
         String str01 = "是是";  // false
@@ -281,6 +290,8 @@ public class Main {
      * [A-Za-z0-9] 可以把所有字符拼接起来供选择，中间不带空格
      */
     private static void test13() {
+        System.out.println("------------test13()------------------");
+
         String pattern01 = "[0-9]{2}";
         String pattern02 = "[a-z]{2}";
         String pattern03 = "[A-Za-z0-9]{3}";
@@ -300,6 +311,8 @@ public class Main {
      * 分歧条件，相当于或者
      */
     private static void test14() {
+        System.out.println("------------test14()------------------");
+
         String pattern = "\\d{2}|\\d{3}";
 
         String str01 = "1";  // false
@@ -317,6 +330,8 @@ public class Main {
      * 分组，把一段内容当做一个整体
      */
     private static void test15() {
+        System.out.println("------------test15()------------------");
+
         String pattern = "(666){1,2}";
 
         String str01 = "66";  // false
@@ -336,6 +351,8 @@ public class Main {
      * 反义
      */
     private static void test16() {
+        System.out.println("------------test16()------------------");
+
         String pattern01 = "\\D*"; // 每一位都不能是数字
         String pattern02 = "[^abcd]";
 
@@ -357,12 +374,14 @@ public class Main {
      * *? 匹配任意字符，但是尽可能的少
      * 像前面的 * + {n,} {n,m} {n} 都是贪婪的，会尽量去匹配更多
      * <p>
-     * 例如 aabab , a.*b 匹配 aabbab； a.*?b 匹配 aab 和 ab
+     * 例如 aabab , a.*b 匹配 aabab； a.*?b 匹配 aab 和 ab
      * （为什么第一个匹配是aab（第一到第三个字符）而不是ab（第二到第三个字符）？简单地说，因为正则表达式有另一条规则，比懒惰／贪婪规则的优先级更高：最先开始的匹配拥有最高的优先权）
      * <p>
      * 贪婪与懒惰
      */
     private static void test17() {
+        System.out.println("------------test17()------------------");
+
         String pattern = "a.*?b"; // 每一位都不能是数字
 
         String str01 = "aabab";  // true
@@ -377,19 +396,36 @@ public class Main {
         System.out.println(Pattern.matches(pattern, str01));
     }
 
+    /**
+     * 练习：只包含（中文，大小写字符，数字）的字符串，长度为 1 到 8
+     *
+     * ^ 代表字符串的头部
+     * $ 代表字符串的尾部
+     */
     private static void test18() {
+        System.out.println("------------test18()------------------");
+
         String pattern = "^[\\u4e00-\\u9fa5a-zA-Z0-9]{1,8}$";
 
         String str01 = "aaa";  // true
-        String str02 = "66a6"; // false
-        String str03 = "Aa6"; // false
-        String str04 = "安安A6a撒a巨大"; // true
+        String str02 = "66a6"; // true
+        String str03 = "Aa6"; // true
+        String str04 = "安安A6a撒a巨大"; // false
 
 
         System.out.println(Pattern.matches(pattern, str01));
         System.out.println(Pattern.matches(pattern, str02));
         System.out.println(Pattern.matches(pattern, str03));
         System.out.println(Pattern.matches(pattern, str04));
+    }
+
+    /**
+     *
+     *
+     */
+    private static void test19() {
+        System.out.println("------------test19()------------------");
+
     }
 
 
