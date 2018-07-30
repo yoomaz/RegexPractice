@@ -44,6 +44,9 @@ public class Main {
         test18();
 
         test19();
+
+        test20();
+
     }
 
 
@@ -398,7 +401,7 @@ public class Main {
 
     /**
      * 练习：只包含（中文，大小写字符，数字）的字符串，长度为 1 到 8
-     *
+     * <p>
      * ^ 代表字符串的头部
      * $ 代表字符串的尾部
      */
@@ -420,12 +423,40 @@ public class Main {
     }
 
     /**
-     *
-     *
+     * 练习：取出匹配的内容，注意，这里要用小括号对要取出的内容进行分组 () ， matcher.group(1) 的参数要从 1 开始
      */
     private static void test19() {
         System.out.println("------------test19()------------------");
 
+        String pattern = "(\\d)";
+
+        String str01 = "[1.2,2,3]";  // true
+
+        // 打印所有匹配到的结果
+        Pattern pt = Pattern.compile(pattern);
+        Matcher matcher = pt.matcher(str01);
+        while (matcher.find()) {
+            System.out.println(matcher.group(1));
+        }
+    }
+
+    /**
+     * 练习：获取 Url 中的参数
+     * <p>
+     * url : webApp/users/buyerOrders/orderInfo/1803271202gqo6a7tosn7e
+     */
+    private static void test20() {
+        System.out.println("------------test20()------------------");
+
+        // 订单详情
+        String url = "webApp/users/buyerOrders/orderInfo/1803271202gqo6a7tosn7e";
+
+        String pattern = "webApp/users/buyerOrders/orderInfo/(.*)";
+        Pattern pt = Pattern.compile(pattern);
+        Matcher matcher = pt.matcher(url);
+        if (matcher.find()) {
+            System.out.println("uri:" + matcher.group(1));
+        }
     }
 
 
