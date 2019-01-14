@@ -7,45 +7,51 @@ public class Main {
 
     public static void main(String[] args) {
 
-        test01();
+//        test01();
+//
+//        test02();
+//
+//        test03();
+//
+//        test04();
+//
+//        test05();
+//
+//        test06();
+//
+//        test07();
+//
+//        test08();
+//
+//        test09();
+//
+//        test10();
+//
+//        test11();
+//
+//        test12();
+//
+//        test13();
+//
+//        test14();
+//
+//        test15();
+//
+//        test16();
+//
+//        test17();
+//
+//        test18();
+//
+//        test19();
+//
+//        test20();
+//
+//        test21();
+//
+//        test22();
 
-        test02();
-
-        test03();
-
-        test04();
-
-        test05();
-
-        test06();
-
-        test07();
-
-        test08();
-
-        test09();
-
-        test10();
-
-        test11();
-
-        test12();
-
-        test13();
-
-        test14();
-
-        test15();
-
-        test16();
-
-        test17();
-
-        test18();
-
-        test19();
-
-        test20();
+        test23();
 
     }
 
@@ -99,9 +105,12 @@ public class Main {
 
         String str01 = "snow";
         String str02 = "sno*w";
+        String str03 = "sno**w";
 
         System.out.println(Pattern.matches(pattern, str01));
         System.out.println(Pattern.matches(pattern, str02));
+        System.out.println(Pattern.matches(pattern, str03));
+
 
     }
 
@@ -358,7 +367,6 @@ public class Main {
 
         String pattern01 = "\\D*"; // 每一位都不能是数字
         String pattern02 = "[^abcd]";
-
         String str01 = "aaa";  // true
         String str02 = "66a6"; // false
 
@@ -456,6 +464,71 @@ public class Main {
         Matcher matcher = pt.matcher(url);
         if (matcher.find()) {
             System.out.println("uri:" + matcher.group(1));
+        }
+    }
+
+    /**
+     * 匹配关键词在句子中的位置(起点和终点)
+     */
+    private static void test21() {
+        System.out.println("------------test21()------------------");
+
+        String title = "你好啊你好啊你";
+        String word = "(你好啊)";
+
+        // 正则匹配关键词
+        Pattern pt = Pattern.compile(word);
+        Matcher matcher = pt.matcher(title);
+        while (matcher.find()) {
+            System.out.println("start:" + matcher.start());
+            System.out.println("end:" + matcher.end());
+
+        }
+    }
+
+    /**
+     * String 对象的 replaceAll 方法可以传入一个正则
+     */
+    private static void test22() {
+        System.out.println("------------test22()------------------");
+
+        String title = "1     1     1       2";
+        // 正则匹配替换
+        System.out.println(title.replaceAll("( +)", " "));
+
+        // String 对象比较
+        String str01 = "a";
+        String str02 = "a";
+        String str03 = new String("a");
+        String str04 = new String("a");
+
+        System.out.println(str01 == str02);
+        System.out.println(str03 == str04);
+        System.out.println(str03 == str01);
+
+    }
+
+    /**
+     * 练习：获取 message 里 a 标签值
+     * TIP: 链接可能被 " 或者 ' 包裹
+     */
+    private static void test23() {
+        System.out.println("------------test23()------------------");
+
+        String message = "竞拍技巧大公开，<a href= '  https://mp.weixin.qq.com/s/iCVn7adhEIntITMoyUNPsw  '  >点此立刻查看</a >";
+        // 标准情况
+//        String normalPattern = "<a href=(\"+|'+)(.*)(\"+|'+)>";
+        // 兼容存在空格
+        String pattern = "<a href= *(\"+|'+) *(.*) *(\"+|'+) *>";
+        Pattern pt = Pattern.compile(pattern);
+        Matcher matcher = pt.matcher(message);
+
+        if (matcher.find()) {
+            System.out.println("start:" + matcher.start());
+            System.out.println("end:" + matcher.end());
+            System.out.println("str:" + message.substring(matcher.start(), matcher.end()));
+
+            System.out.println("group:" + matcher.group(2));
         }
     }
 
